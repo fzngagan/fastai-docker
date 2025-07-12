@@ -36,7 +36,7 @@
 # ------------------------------------------------------------------
 
     RUN python3 -m pip install --upgrade pip && \
-        python3 -m pip install --upgrade fastai >=2.6.0 && \
+        python3 -m pip install --upgrade fastai >=2.8.2 && \
         python3 -m pip install --upgrade fastbook && \
         python3 -m pip install --upgrade jupyterlab-git
 
