@@ -26,7 +26,7 @@
     RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh" && \
         bash Mambaforge-$(uname)-$(uname -m).sh -b && \
         ~/mambaforge/condabin/conda init && \
-        /root/mambaforge/bin/mamba install jupyter jupyterlab ipython -c conda-forge -y && \
+        /root/mambaforge/bin/mamba install jupyter jupyterlab ipython py-xgboost=*=cuda* -c conda-forge -y && \
         rm Mambaforge-$(uname)-$(uname -m).sh
     ENV PATH=$PATH:/root/mambaforge/bin
 
