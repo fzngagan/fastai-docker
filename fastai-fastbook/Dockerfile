@@ -22,13 +22,13 @@
 # ------------------------------------------------------------------
 
     # Based on https://github.com/conda-forge/miniforge
-    
-    RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh" && \
-        bash Mambaforge-$(uname)-$(uname -m).sh -b && \
-        ~/mambaforge/condabin/conda init && \
-        /root/mambaforge/bin/mamba install jupyter jupyterlab ipython py-xgboost=*=cuda* -c conda-forge -y && \
-        rm Mambaforge-$(uname)-$(uname -m).sh
-    ENV PATH=$PATH:/root/mambaforge/bin
+    ENV CONDA_OVERRIDE_CUDA="12.8"
+    RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
+        bash Miniforge3-$(uname)-$(uname -m).sh -b && \
+        ~/miniforge3/bin/conda init && \
+        ~/miniforge3/bin/conda install jupyter jupyterlab ipython py-xgboost=*=cuda* -c conda-forge -y && \
+        rm Miniforge3-$(uname)-$(uname -m).sh
+    ENV PATH=$PATH:~/miniforge3/bin/conda
 
 
 # ==================================================================
@@ -38,6 +38,7 @@
     RUN python3 -m pip install --upgrade pip && \
         python3 -m pip install --upgrade fastai >=2.8.2 && \
         python3 -m pip install --upgrade fastbook && \
+        python3 -m pip install --upgrade xgboost && \
         python3 -m pip install --upgrade jupyterlab-git
 
 
